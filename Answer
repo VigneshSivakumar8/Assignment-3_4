@@ -1,0 +1,14 @@
+NameNode and its Importance in Hadoop Cluster :-
+                       The NameNode is the centerpiece of an HDFS file system. It keeps the directory tree of all files in the file system,
+               and tracks where across the cluster the file data is kept. It does not store the data of these files itself. Client
+               applications talk to the NameNode whenever they wish to locate a file, or when they want to add/copy/move/delete a file. 
+               The NameNode responds the successful requests by returning a list of relevant DataNode servers where the data lives. The
+               NameNode is a Single Point of Failure for the HDFS Cluster. HDFS is not currently a High Availability system. When the
+               NameNode goes down, the file system goes offline. There is an optional SecondaryNameNode that can be hosted on a separate
+               machine. It only creates checkpoints of the namespace by merging the edits file into the fsimage file and does not provide
+               any real redundancy. Hadoop 0.21+ has a BackupNameNode that is part of a plan to have an HA name service, but it needs 
+               active contributions from the people who want it (i.e. you) to make it Highly Available.
+                       The Name Node is a critical component of the Hadoop Distributed File System (HDFS). Without it, Clients would not be able
+               to write or read files from HDFS, and it would be impossible to schedule and execute Map Reduce jobs. Because of this, it’s a
+               good idea to equip the Name Node with a highly redundant enterprise class server configuration; dual power supplies, hot 
+               swappable fans, redundant NIC connections, etc.
